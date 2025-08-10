@@ -102,12 +102,12 @@ export default function ReservationPage() {
       <Navbar />
       <main>
         {/* Hero Section */}
-        <section className="section bg-gradient-to-br from-rose-50 to-pink-50 border-b">
+        <section className="section bg-gradient-to-br from-violet-50/50 via-white to-purple-50/50">
           <div className="container text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-4">
+            <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-slate-800 via-violet-800 to-purple-800 bg-clip-text text-transparent">
               Réserver une Table
             </h1>
-            <p className="text-lg text-neutral-700 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
               Réservez votre table en quelques clics pour une expérience gastronomique inoubliable 
               dans notre cadre exceptionnel.
             </p>
@@ -118,35 +118,35 @@ export default function ReservationPage() {
           <div className="container max-w-2xl">
             {/* Success Message */}
             {ok && (
-              <div className="mb-8 p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center gap-3">
-                <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                  <Check className="text-emerald-600" size={16} />
+              <div className="mb-8 p-6 bg-emerald-50/80 backdrop-blur-sm border border-emerald-200/50 rounded-3xl flex items-center gap-4 shadow-lg shadow-emerald-500/10">
+                <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/25">
+                  <Check className="text-white" size={20} />
                 </div>
-                <p className="text-emerald-800">{ok}</p>
+                <p className="text-emerald-800 font-medium">{ok}</p>
               </div>
             )}
 
             {/* Error Message */}
             {error && (
-              <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-2xl flex items-center gap-3">
-                <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                  <AlertCircle className="text-red-600" size={16} />
+              <div className="mb-8 p-6 bg-red-50/80 backdrop-blur-sm border border-red-200/50 rounded-3xl flex items-center gap-4 shadow-lg shadow-red-500/10">
+                <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg shadow-red-500/25">
+                  <AlertCircle className="text-white" size={20} />
                 </div>
-                <p className="text-red-800">{error}</p>
+                <p className="text-red-800 font-medium">{error}</p>
               </div>
             )}
 
             {/* Info Section */}
-            <div className="mb-8 p-6 bg-neutral-50 rounded-3xl">
-              <h2 className="font-bold text-lg mb-4">Informations importantes</h2>
-              <div className="grid md:grid-cols-2 gap-4 text-sm text-neutral-700">
-                <div>
-                  <p className="font-medium mb-1">Horaires de service</p>
+            <div className="mb-10 p-8 bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl shadow-violet-500/5 border border-white/50">
+              <h2 className="font-bold text-xl mb-6 text-slate-800">Informations importantes</h2>
+              <div className="grid md:grid-cols-2 gap-6 text-slate-600">
+                <div className="p-4 bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl">
+                  <p className="font-semibold mb-2 text-slate-800">Horaires de service</p>
                   <p>Déjeuner : 12h00 - 14h00</p>
                   <p>Dîner : 19h00 - 21h30</p>
                 </div>
-                <div>
-                  <p className="font-medium mb-1">Politique d'annulation</p>
+                <div className="p-4 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl">
+                  <p className="font-semibold mb-2 text-slate-800">Politique d'annulation</p>
                   <p>Annulation gratuite jusqu'à 24h avant</p>
                   <p>Contact : 05 63 91 78 42</p>
                 </div>
@@ -163,7 +163,7 @@ export default function ReservationPage() {
                   </label>
                   <input
                     type="date"
-                    className="w-full rounded-2xl border-2 border-neutral-200 p-4 focus:border-rose-400 focus:outline-none transition-colors"
+                    className="w-full rounded-2xl border-2 border-violet-200/50 bg-white/80 backdrop-blur-sm p-4 focus:border-violet-400 focus:bg-white focus:outline-none transition-all duration-300 shadow-sm focus:shadow-lg focus:shadow-violet-500/10"
                     min={new Date().toISOString().split('T')[0]}
                     {...register("date")}
                   />
@@ -181,7 +181,7 @@ export default function ReservationPage() {
                     Heure souhaitée *
                   </label>
                   <select
-                    className="w-full rounded-2xl border-2 border-neutral-200 p-4 focus:border-rose-400 focus:outline-none transition-colors"
+                    className="w-full rounded-2xl border-2 border-violet-200/50 bg-white/80 backdrop-blur-sm p-4 focus:border-violet-400 focus:bg-white focus:outline-none transition-colors"
                     {...register("time")}
                   >
                     <option value="">Choisir une heure</option>
@@ -213,7 +213,7 @@ export default function ReservationPage() {
                     Nombre de couverts *
                   </label>
                   <select
-                    className="w-full rounded-2xl border-2 border-neutral-200 p-4 focus:border-rose-400 focus:outline-none transition-colors"
+                    className="w-full rounded-2xl border-2 border-violet-200/50 bg-white/80 backdrop-blur-sm p-4 focus:border-violet-400 focus:bg-white focus:outline-none transition-colors"
                     {...register("guests", { valueAsNumber: true })}
                   >
                     {[...Array(12)].map((_, i) => (
@@ -238,7 +238,7 @@ export default function ReservationPage() {
                   <input
                     type="text"
                     placeholder="Votre nom"
-                    className="w-full rounded-2xl border-2 border-neutral-200 p-4 focus:border-rose-400 focus:outline-none transition-colors"
+                    className="w-full rounded-2xl border-2 border-violet-200/50 bg-white/80 backdrop-blur-sm p-4 focus:border-violet-400 focus:bg-white focus:outline-none transition-colors"
                     {...register("name")}
                   />
                   {errors.name && (
@@ -260,7 +260,7 @@ export default function ReservationPage() {
                   <input
                     type="email"
                     placeholder="votre@email.com"
-                    className="w-full rounded-2xl border-2 border-neutral-200 p-4 focus:border-rose-400 focus:outline-none transition-colors"
+                    className="w-full rounded-2xl border-2 border-violet-200/50 bg-white/80 backdrop-blur-sm p-4 focus:border-violet-400 focus:bg-white focus:outline-none transition-colors"
                     {...register("email")}
                   />
                   {errors.email && (
@@ -279,7 +279,7 @@ export default function ReservationPage() {
                   <input
                     type="tel"
                     placeholder="06 12 34 56 78"
-                    className="w-full rounded-2xl border-2 border-neutral-200 p-4 focus:border-rose-400 focus:outline-none transition-colors"
+                    className="w-full rounded-2xl border-2 border-violet-200/50 bg-white/80 backdrop-blur-sm p-4 focus:border-violet-400 focus:bg-white focus:outline-none transition-colors"
                     {...register("phone")}
                   />
                   {errors.phone && (
@@ -300,7 +300,7 @@ export default function ReservationPage() {
                 <textarea
                   rows={4}
                   placeholder="Allergies, régimes alimentaires, occasion spéciale, préférences de placement..."
-                  className="w-full rounded-2xl border-2 border-neutral-200 p-4 focus:border-rose-400 focus:outline-none transition-colors resize-none"
+                  className="w-full rounded-2xl border-2 border-violet-200/50 bg-white/80 backdrop-blur-sm p-4 focus:border-violet-400 focus:bg-white focus:outline-none transition-colors resize-none"
                   {...register("note")}
                 />
               </div>
@@ -309,7 +309,7 @@ export default function ReservationPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 px-8 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-600 text-white font-semibold text-lg hover:from-rose-600 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full py-4 px-8 rounded-3xl bg-gradient-to-r from-violet-600 to-purple-600 text-white font-bold text-lg hover:from-violet-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2 shadow-xl shadow-violet-500/25 hover:shadow-2xl hover:shadow-violet-500/40 transform hover:-translate-y-1"
               >
                 {isSubmitting ? (
                   <>
@@ -333,22 +333,22 @@ export default function ReservationPage() {
         </section>
 
         {/* Contact Fallback */}
-        <section className="section bg-neutral-50">
+        <section className="section bg-gradient-to-br from-slate-50 to-violet-50/30">
           <div className="container text-center">
-            <h2 className="text-2xl font-bold mb-4">Préférez réserver par téléphone ?</h2>
-            <p className="text-neutral-600 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-slate-800 to-violet-800 bg-clip-text text-transparent">Préférez réserver par téléphone ?</h2>
+            <p className="text-slate-600 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
               Notre équipe se fera un plaisir de vous accueillir et de répondre à toutes vos questions.
             </p>
-            <div className="flex gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="tel:0563917842"
-                className="px-6 py-3 rounded-2xl border-2 border-neutral-300 hover:border-neutral-400 transition-colors font-semibold"
+                className="px-8 py-4 rounded-3xl bg-white/80 backdrop-blur-sm border-2 border-violet-200 hover:border-violet-400 hover:bg-white/90 transition-all duration-300 font-bold text-lg text-slate-700 hover:text-violet-700 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 05 63 91 78 42
               </a>
               <a 
                 href="/contact"
-                className="px-6 py-3 rounded-2xl bg-neutral-200 hover:bg-neutral-300 transition-colors font-semibold"
+                className="px-8 py-4 rounded-3xl bg-gradient-to-r from-slate-200 to-slate-300 hover:from-slate-300 hover:to-slate-400 transition-all duration-300 font-bold text-lg text-slate-700 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Voir les horaires
               </a>

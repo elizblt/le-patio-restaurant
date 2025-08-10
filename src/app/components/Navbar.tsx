@@ -30,32 +30,31 @@ export default function Navbar() {
         Aller au contenu principal
       </a>
       
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-neutral-200 shadow-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/50 shadow-sm">
         <nav className="container" role="navigation" aria-label="Navigation principale">
-          <div className="h-16 flex items-center justify-between">
+          <div className="h-20 flex items-center justify-between">
             {/* Logo */}
             <Link 
               href="/" 
-              className="font-extrabold tracking-tight text-xl hover:text-amber-600 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 rounded-lg px-2 py-1"
+              className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent hover:from-violet-700 hover:to-purple-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 rounded-xl px-3 py-2"
               aria-label="Le Patio - Accueil"
             >
               Le Patio
             </Link>
 
             {/* Desktop Navigation */}
-            <ul className="hidden md:flex items-center gap-8" role="menubar">
+            <ul className="hidden md:flex items-center gap-2" role="menubar">
               {links.map(link => (
                 <li key={link.href} role="none">
                   <Link
                     href={link.href}
                     role="menuitem"
-                    className={`text-sm font-medium transition-all duration-200 hover:text-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 rounded-lg px-3 py-2 ${
+                    className={`text-sm font-medium transition-all duration-300 rounded-full px-6 py-3 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 ${
                       pathname === link.href 
-                        ? "text-amber-600 font-semibold" 
-                        : "text-neutral-700 hover:text-amber-600"
+                        ? "bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-500/25" 
+                        : "text-slate-700 hover:text-violet-600 hover:bg-white/60 backdrop-blur-sm"
                     }`}
                     aria-current={pathname === link.href ? "page" : undefined}
-                    onClick={closeMobileMenu}
                   >
                     {link.label}
                   </Link>
@@ -68,7 +67,7 @@ export default function Navbar() {
               {/* Phone number (hidden on small screens) */}
               <a 
                 href="tel:0563917842"
-                className="hidden lg:flex items-center gap-2 text-sm text-neutral-600 hover:text-amber-600 transition-colors px-3 py-2 rounded-lg border border-neutral-200 hover:border-amber-200"
+                className="hidden lg:flex items-center gap-2 text-sm text-neutral-600 hover:text-violet-600 transition-colors px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm hover:bg-white/80 shadow-sm"
                 aria-label="Appeler le restaurant"
               >
                 <Phone size={14} />
@@ -78,16 +77,16 @@ export default function Navbar() {
               {/* Mobile menu button */}
               <button
                 type="button"
-                className="md:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="md:hidden p-3 rounded-2xl bg-white/60 backdrop-blur-sm hover:bg-white/80 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-violet-500 shadow-sm"
                 onClick={toggleMobileMenu}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"
                 aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               >
                 {isMobileMenuOpen ? (
-                  <X size={24} aria-hidden="true" />
+                  <X size={20} className="text-slate-600" aria-hidden="true" />
                 ) : (
-                  <Menu size={24} aria-hidden="true" />
+                  <Menu size={20} className="text-slate-600" aria-hidden="true" />
                 )}
               </button>
             </div>
@@ -97,35 +96,33 @@ export default function Navbar() {
           {isMobileMenuOpen && (
             <div 
               id="mobile-menu"
-              className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-neutral-200 shadow-lg"
+              className="md:hidden absolute top-20 left-4 right-4 bg-white/95 backdrop-blur-xl rounded-3xl border border-slate-200/50 shadow-xl shadow-slate-900/10"
               role="menu"
               aria-orientation="vertical"
             >
-              <ul className="py-4 space-y-2">
+              <ul className="p-6 space-y-2">
                 {links.map(link => (
                   <li key={link.href} role="none">
                     <Link
                       href={link.href}
                       role="menuitem"
-                      className={`block px-4 py-3 text-base font-medium transition-colors hover:bg-amber-50 hover:text-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-inset ${
+                      className={`block px-6 py-4 text-base font-medium rounded-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-inset ${
                         pathname === link.href 
-                          ? "text-amber-600 bg-amber-50 font-semibold" 
-                          : "text-neutral-700"
+                          ? "bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-500/25" 
+                          : "text-slate-700 hover:text-violet-600 hover:bg-violet-50"
                       }`}
                       aria-current={pathname === link.href ? "page" : undefined}
-                      onClick={closeMobileMenu}
-                    >
+                      >
                       {link.label}
                     </Link>
                   </li>
                 ))}
                 
                 {/* Mobile phone link */}
-                <li className="px-4 pt-4 border-t border-neutral-200" role="none">
+                <li className="pt-4 mt-4 border-t border-slate-200" role="none">
                   <a 
                     href="tel:0563917842"
-                    className="flex items-center gap-3 py-3 text-base font-medium text-neutral-700 hover:text-amber-600 transition-colors"
-                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 px-6 py-4 text-base font-medium text-slate-700 hover:text-violet-600 transition-all duration-300 rounded-2xl hover:bg-violet-50"
                     aria-label="Appeler le restaurant"
                   >
                     <Phone size={18} />

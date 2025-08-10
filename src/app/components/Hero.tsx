@@ -5,9 +5,15 @@ import { Star, Award, MapPin, Clock } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden min-h-screen flex items-center">
       {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-violet-50/50 via-white to-cyan-50/50"></div>
+      
+      {/* Animated background shapes */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-gradient-to-br from-violet-400/20 to-purple-400/20 blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-br from-cyan-400/20 to-blue-400/20 blur-3xl animate-pulse" style={{animationDelay: "2s"}}></div>
+      </div>
       
       <div className="section relative">
         <div className="container grid lg:grid-cols-2 gap-12 items-center">
@@ -21,39 +27,41 @@ export default function Hero() {
               initial={{opacity:0,y:10}} 
               animate={{opacity:1,y:0}}
               transition={{duration:0.6, delay:0.2}}
-              className="flex items-center gap-4 mb-6"
+              className="flex items-center gap-4 mb-8"
             >
-              <div className="flex items-center gap-1 bg-white px-3 py-1 rounded-full shadow-sm">
+              <div className="flex items-center gap-1 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg shadow-violet-500/10 border border-white/50">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={12} className="text-amber-400 fill-current" />
+                  <Star key={i} size={14} className="text-amber-400 fill-current" />
                 ))}
-                <span className="text-xs font-semibold ml-1">4.8</span>
+                <span className="text-sm font-semibold ml-2 text-slate-700">4.8</span>
               </div>
-              <div className="flex items-center gap-1 bg-white px-3 py-1 rounded-full shadow-sm">
-                <Award size={12} className="text-emerald-600" />
-                <span className="text-xs font-semibold">Bib Gourmand</span>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg shadow-emerald-500/10 border border-white/50">
+                <Award size={14} className="text-emerald-600" />
+                <span className="text-sm font-semibold text-slate-700">Bib Gourmand</span>
               </div>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-[0.9] mb-6">
-              <span className="block text-neutral-900">Le Patio</span>
-              <span className="block text-amber-700 text-3xl md:text-4xl font-normal mt-2">
+            <h1 className="text-6xl md:text-8xl font-black leading-[0.85] mb-8">
+              <span className="block bg-gradient-to-r from-slate-900 via-violet-900 to-purple-900 bg-clip-text text-transparent">
+                Le Patio
+              </span>
+              <span className="block text-2xl md:text-3xl font-medium mt-4 bg-gradient-to-r from-violet-600 to-cyan-600 bg-clip-text text-transparent">
                 Restaurant Gastronomique
               </span>
             </h1>
             
-            <p className="text-xl text-neutral-700 leading-relaxed mb-4 max-w-lg">
+            <p className="text-xl text-slate-600 leading-relaxed mb-6 max-w-lg">
               Cuisine française raffinée dans un cadre d'exception. 
               Notre terrasse ombragée vous accueille au cœur de Montauban.
             </p>
 
-            <div className="flex items-center gap-6 mb-8 text-sm text-neutral-600">
-              <div className="flex items-center gap-2">
-                <MapPin size={16} />
+            <div className="flex items-center gap-8 mb-10 text-sm text-slate-500">
+              <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-3 py-2 rounded-full">
+                <MapPin size={16} className="text-violet-500" />
                 <span>Centre historique</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Clock size={16} />
+              <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-3 py-2 rounded-full">
+                <Clock size={16} className="text-cyan-500" />
                 <span>12h-14h • 19h-22h30</span>
               </div>
             </div>
@@ -66,13 +74,14 @@ export default function Hero() {
             >
               <Link 
                 href="/reservation" 
-                className="group px-8 py-4 rounded-3xl bg-gradient-to-r from-amber-600 to-orange-600 text-white font-semibold text-lg hover:from-amber-700 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center"
+                className="group relative px-8 py-4 rounded-3xl bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold text-lg hover:from-violet-700 hover:to-purple-700 transition-all duration-300 shadow-xl shadow-violet-500/25 hover:shadow-2xl hover:shadow-violet-500/40 transform hover:-translate-y-1 text-center overflow-hidden"
               >
-                Réserver une table
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative">Réserver une table</span>
               </Link>
               <Link 
                 href="/menu" 
-                className="group px-8 py-4 rounded-3xl border-2 border-neutral-300 font-semibold text-lg hover:border-amber-400 hover:bg-amber-50 transition-all duration-300 text-center"
+                className="group px-8 py-4 rounded-3xl bg-white/80 backdrop-blur-sm border-2 border-violet-200 hover:border-violet-400 font-semibold text-lg text-slate-700 hover:text-violet-700 hover:bg-white/90 transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Découvrir la carte
               </Link>
@@ -83,11 +92,20 @@ export default function Hero() {
               initial={{opacity:0}} 
               animate={{opacity:1}}
               transition={{duration:0.6, delay:0.6}}
-              className="mt-8 flex items-center gap-8 text-xs text-neutral-500"
+              className="mt-8 flex items-center gap-6 text-xs text-slate-500"
             >
-              <span>✓ Produits 100% locaux</span>
-              <span>✓ Réservation instantanée</span>
-              <span>✓ Terrasse chauffée</span>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                <span>Produits 100% locaux</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span>Réservation instantanée</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                <span>Terrasse chauffée</span>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -99,12 +117,12 @@ export default function Hero() {
           >
             {/* Main image placeholder with better styling */}
             <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-amber-200 via-orange-300 to-red-400">
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-amber-100/20 to-orange-200/20 backdrop-blur-sm">
-                  <div className="text-center text-white p-8">
-                    <div className="text-6xl mb-4">🍽️</div>
-                    <h3 className="text-2xl font-bold mb-2">Notre Terrasse</h3>
-                    <p className="text-lg opacity-90">Ambiance authentique • Cadre verdoyant</p>
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-violet-500/20 bg-gradient-to-br from-violet-100 via-purple-200 to-pink-200 border border-white/50">
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white/10 to-violet-100/30 backdrop-blur-sm">
+                  <div className="text-center text-slate-700 p-8">
+                    <div className="text-6xl mb-4 filter drop-shadow-sm">🍽️</div>
+                    <h3 className="text-2xl font-bold mb-2 text-slate-800">Notre Terrasse</h3>
+                    <p className="text-lg text-slate-600">Ambiance authentique • Cadre verdoyant</p>
                   </div>
                 </div>
               </div>
@@ -114,11 +132,11 @@ export default function Hero() {
                 initial={{opacity:0,x:20}} 
                 animate={{opacity:1,x:0}}
                 transition={{duration:0.6, delay:0.8}}
-                className="absolute -right-4 top-4 bg-white p-4 rounded-2xl shadow-lg"
+                className="absolute -right-4 top-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl shadow-violet-500/10 border border-white/50"
               >
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-amber-600">15+</div>
-                  <div className="text-xs text-neutral-600">Producteurs locaux</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">15+</div>
+                  <div className="text-xs text-slate-600">Producteurs locaux</div>
                 </div>
               </motion.div>
 
@@ -126,27 +144,29 @@ export default function Hero() {
                 initial={{opacity:0,x:-20}} 
                 animate={{opacity:1,x:0}}
                 transition={{duration:0.6, delay:1}}
-                className="absolute -left-4 bottom-4 bg-white p-4 rounded-2xl shadow-lg"
+                className="absolute -left-4 bottom-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl shadow-emerald-500/10 border border-white/50"
               >
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-emerald-600">6</div>
-                  <div className="text-xs text-neutral-600">Ans d'excellence</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">6</div>
+                  <div className="text-xs text-slate-600">Ans d'excellence</div>
                 </div>
               </motion.div>
             </div>
 
             {/* Secondary images grid */}
             <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-emerald-200 to-teal-300 flex items-center justify-center shadow-lg">
-                <div className="text-center text-white">
-                  <div className="text-3xl mb-2">👨‍🍳</div>
-                  <div className="text-sm font-semibold">Chef Thomas</div>
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-emerald-100 to-teal-200 border border-white/50 flex items-center justify-center shadow-xl shadow-emerald-500/10">
+                <div className="text-center">
+                  <div className="text-4xl mb-3 filter drop-shadow-sm">👨‍🍳</div>
+                  <div className="text-sm font-bold text-slate-700">Chef Thomas</div>
+                  <div className="text-xs text-slate-500">Cuisine d'excellence</div>
                 </div>
               </div>
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-purple-200 to-pink-300 flex items-center justify-center shadow-lg">
-                <div className="text-center text-white">
-                  <div className="text-3xl mb-2">🍷</div>
-                  <div className="text-sm font-semibold">Carte des vins</div>
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-purple-100 to-pink-200 border border-white/50 flex items-center justify-center shadow-xl shadow-purple-500/10">
+                <div className="text-center">
+                  <div className="text-4xl mb-3 filter drop-shadow-sm">🍷</div>
+                  <div className="text-sm font-bold text-slate-700">Carte des vins</div>
+                  <div className="text-xs text-slate-500">Sélection premium</div>
                 </div>
               </div>
             </div>
@@ -154,9 +174,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-10 left-10 w-20 h-20 bg-amber-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-10 right-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse" style={{animationDelay: "1s"}}></div>
+      {/* Remove old decorative elements as we have new ones */}
     </section>
   );
 }
