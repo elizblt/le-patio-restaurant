@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:gracetemplate.framer.website)",
+      "WebFetch(domain:www.lacoteetlarete.fr)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
